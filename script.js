@@ -36,6 +36,30 @@ langMenu.querySelectorAll("button").forEach(btn => {
 });
 }
 
+  /* ================= WIDGET FORMATION ================= */
+
+  const widget = document.getElementById("formationWidget");
+
+let isDragging = false;
+let offsetX, offsetY;
+
+widget.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - widget.offsetLeft;
+  offsetY = e.clientY - widget.offsetTop;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  widget.style.left = (e.clientX - offsetX) + "px";
+  widget.style.top = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
 /* ================= HELPERS ================= */
 function experienceCard(role, company, sector, tasks) {
   return `
