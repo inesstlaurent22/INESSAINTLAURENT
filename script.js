@@ -251,15 +251,33 @@ const CONTENT = {
     </div>
   `,
 
-  academic: `
-    <h2 class="title animate-title">🎓 Parcours académique</h2>
+academic: `
+  <h2 class="title animate-title">🎓 Parcours académique</h2>
 
-    <p><strong>Master Import-Export</strong><br>KEDGE Business School — Marseille</p>
-    <p><strong>Bachelor International Business</strong><br>INSEEC — Paris</p>
-    <p><strong>BTS Commerce International</strong><br>Lycée Jean Lurçat - Paris</p>
-    <p><strong>Licence de Gestion</strong><br>Paris 1 Panthéon-Sorbonne</p>
-    <p><strong>Diplôme de Comptabilité et de Gestion</strong><br>École Nationale de Commerce — Paris</p>
-  `,
+  <p>
+    <strong>2024</strong><br>
+    <strong>Master Import-Export</strong><br>
+    KEDGE Business School — Marseille
+  </p>
+
+  <p>
+    <strong>2021–2022</strong><br>
+    <strong>Bachelor International Business</strong><br>
+    INSEEC — Paris
+  </p>
+
+  <p>
+    <strong>2019–2021</strong><br>
+    <strong>BTS Commerce International</strong><br>
+    Lycée Jean Lurçat — Paris
+  </p>
+
+  <p>
+    <strong>2018</strong><br>
+    <strong>Diplôme de Comptabilité et de Gestion</strong><br>
+    École Nationale de Commerce — Paris
+  </p>
+`,
 
   socials: `
     <h2 class="title animate-title">Réseaux sociaux</h2>
@@ -465,15 +483,33 @@ en: {
     </div>
   `,
 
-  academic: `
-    <h2 class="title animate-title">🎓 Academic Background</h2>
+academic: `
+  <h2 class="title animate-title">🎓 Academic Background</h2>
 
-    <p><strong>Master’s Degree in Import–Export</strong><br>KEDGE Business School — Marseille</p>
-    <p><strong>Bachelor in International Business</strong><br>INSEEC — Paris</p>
-    <p><strong>BTS International Trade</strong><br>Lycée Jean Lurçat — Paris</p>
-    <p><strong>Bachelor’s Degree in Management</strong><br>Paris 1 Panthéon-Sorbonne</p>
-    <p><strong>Diploma in Accounting and Management</strong><br>École Nationale de Commerce — Paris</p>
-  `,
+  <p>
+    <strong>2024</strong><br>
+    <strong>Master’s Degree in Import-Export</strong><br>
+    KEDGE Business School — Marseille
+  </p>
+
+  <p>
+    <strong>2021–2022</strong><br>
+    <strong>Bachelor’s Degree in International Business</strong><br>
+    INSEEC — Paris
+  </p>
+
+  <p>
+    <strong>2019–2021</strong><br>
+    <strong>BTS in International Trade</strong><br>
+    Lycée Jean Lurçat — Paris
+  </p>
+
+  <p>
+    <strong>2018</strong><br>
+    <strong>Diploma in Accounting and Management</strong><br>
+    École Nationale de Commerce — Paris
+  </p>
+`,
 
   socials: `
     <h2 class="title animate-title">Social Media</h2>
@@ -679,15 +715,33 @@ es: {
     </div>
   `,
 
-  academic: `
-    <h2 class="title animate-title">🎓 Formación académica</h2>
+academic: `
+  <h2 class="title animate-title">🎓 Formación Académica</h2>
 
-    <p><strong>Máster en Importación y Exportación</strong><br>KEDGE Business School — Marsella</p>
-    <p><strong>Grado en Negocios Internacionales</strong><br>INSEEC — París</p>
-    <p><strong>BTS Comercio Internacional</strong><br>Lycée Jean Lurçat — París</p>
-    <p><strong>Licenciatura en Gestión</strong><br>Paris 1 Panthéon-Sorbonne</p>
-    <p><strong>Diploma en Contabilidad y Gestión</strong><br>École Nationale de Commerce — París</p>
-  `,
+  <p>
+    <strong>2024</strong><br>
+    <strong>Máster en Importación-Exportación</strong><br>
+    KEDGE Business School — Marsella
+  </p>
+
+  <p>
+    <strong>2021–2022</strong><br>
+    <strong>Grado en Negocios Internacionales</strong><br>
+    INSEEC — París
+  </p>
+
+  <p>
+    <strong>2019–2021</strong><br>
+    <strong>Técnico Superior en Comercio Internacional</strong><br>
+    Lycée Jean Lurçat — París
+  </p>
+
+  <p>
+    <strong>2018</strong><br>
+    <strong>Diploma en Contabilidad y Gestión</strong><br>
+    École Nationale de Commerce — París
+  </p>
+`,
 
   socials: `
     <h2 class="title animate-title">Redes sociales</h2>
@@ -893,15 +947,33 @@ zh: {
     </div>
   `,
 
-  academic: `
-    <h2 class="title animate-title">🎓 学术背景</h2>
+academic: `
+  <h2 class="title animate-title">🎓 教育背景</h2>
 
-    <p><strong>进出口硕士</strong><br>KEDGE 商学院 — 马赛</p>
-    <p><strong>国际商务学士</strong><br>INSEEC — 巴黎</p>
-    <p><strong>国际贸易 BTS</strong><br>Jean Lurçat 高中 — 巴黎</p>
-    <p><strong>管理学学士</strong><br>巴黎第一大学（先贤祠-索邦）</p>
-    <p><strong>会计与管理文凭</strong><br>国家商业学院 — 巴黎</p>
-  `,
+  <p>
+    <strong>2024</strong><br>
+    <strong>进出口硕士学位</strong><br>
+    KEDGE Business School — 马赛
+  </p>
+
+  <p>
+    <strong>2021–2022</strong><br>
+    <strong>国际商务学士学位</strong><br>
+    INSEEC — 巴黎
+  </p>
+
+  <p>
+    <strong>2019–2021</strong><br>
+    <strong>国际贸易高级技术文凭</strong><br>
+    Lycée Jean Lurçat — 巴黎
+  </p>
+
+  <p>
+    <strong>2018</strong><br>
+    <strong>会计与管理文凭</strong><br>
+    École Nationale de Commerce — 巴黎
+  </p>
+`,
 
   socials: `
     <h2 class="title animate-title">社交网络</h2>
