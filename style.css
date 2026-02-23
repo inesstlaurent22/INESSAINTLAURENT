@@ -37,21 +37,23 @@ html, body {
   position: fixed;
   top: 20px;
   left: 20px;
-  max-width: 320px;
-  padding: 15px 18px;
-  border-radius: 20px;
-  background: rgba(120, 120, 120, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
+  max-width: 340px;
+  padding: 16px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.25); /* blanc transparent */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #111;
   font-size: 14px;
-  line-height: 1.4;
+  font-weight: 700;
+  line-height: 1.5;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   z-index: 9999;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   cursor: grab;
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .formation-widget:active {
@@ -59,14 +61,22 @@ html, body {
 }
 
 .widget-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  font-size: 22px;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .widget-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 /* ================= BLOCS ================= */
