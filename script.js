@@ -37,17 +37,19 @@ langMenu.querySelectorAll("button").forEach(btn => {
 });
 }
 
-/* ================= WIDGET DRAG DESKTOP + MOBILE ================= */
+/* ================= WIDGET DRAG FULL MOBILE FIX ================= */
 
 const widget = document.getElementById("formationWidget");
 
 let isDragging = false;
+let hasMoved = false;
 let offsetX = 0;
 let offsetY = 0;
 
 /* ===== DESKTOP ===== */
 widget.addEventListener("mousedown", (e) => {
   isDragging = true;
+  hasMoved = false;
   offsetX = e.clientX - widget.offsetLeft;
   offsetY = e.clientY - widget.offsetTop;
 });
@@ -55,6 +57,7 @@ widget.addEventListener("mousedown", (e) => {
 document.addEventListener("mousemove", (e) => {
   if (!isDragging) return;
 
+  hasMoved = true;
   widget.style.left = (e.clientX - offsetX) + "px";
   widget.style.top = (e.clientY - offsetY) + "px";
 });
@@ -67,21 +70,35 @@ document.addEventListener("mouseup", () => {
 widget.addEventListener("touchstart", (e) => {
   const touch = e.touches[0];
   isDragging = true;
+  hasMoved = false;
   offsetX = touch.clientX - widget.offsetLeft;
   offsetY = touch.clientY - widget.offsetTop;
-});
+}, { passive: false });
 
 document.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
 
+  e.preventDefault(); // 🔥 bloque le scroll
+
   const touch = e.touches[0];
+  hasMoved = true;
 
   widget.style.left = (touch.clientX - offsetX) + "px";
   widget.style.top = (touch.clientY - offsetY) + "px";
-});
+}, { passive: false });
 
 document.addEventListener("touchend", () => {
   isDragging = false;
+});
+
+/* ===== CLIC SEULEMENT SI PAS DRAG ===== */
+widget.addEventListener("click", (e) => {
+  if (hasMoved) {
+    e.preventDefault();
+    return;
+  }
+
+  window.location.href = "https://ton-site-de-formation.com";
 });
 
 /* ================= HELPERS ================= */
