@@ -32,7 +32,7 @@ html, body {
   z-index: 1;
 }
 
-/* ================= BOUTON FORMATION ================= */
+/* ================= WIDGET FORMATION ================= */
 .formation-widget {
   position: fixed;
   top: 20px;
@@ -40,7 +40,7 @@ html, body {
   max-width: 320px;
   padding: 15px 18px;
   border-radius: 20px;
-  background: rgba(120, 120, 120, 0.25); /* gris transparent */
+  background: rgba(120, 120, 120, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: white;
@@ -51,6 +51,11 @@ html, body {
   gap: 10px;
   z-index: 9999;
   box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  cursor: grab;
+}
+
+.formation-widget:active {
+  cursor: grabbing;
 }
 
 .widget-btn {
