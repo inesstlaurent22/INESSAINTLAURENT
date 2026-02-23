@@ -32,6 +32,38 @@ html, body {
   z-index: 1;
 }
 
+/* ================= BOUTON FORMATION ================= */
+.formation-widget {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  max-width: 320px;
+  padding: 15px 18px;
+  border-radius: 20px;
+  background: rgba(120, 120, 120, 0.25); /* gris transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.widget-btn {
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.widget-btn:hover {
+  transform: scale(1.2);
+}
+
 /* ================= BLOCS ================= */
 .bloc {
   position: absolute;
