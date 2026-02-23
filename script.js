@@ -1068,10 +1068,10 @@ function updateBlockLabels() {
 
   /* ================= WIDGET TEXT ================= */
 const WIDGET_TEXT = {
-  fr: "Prochainement, retrouvez ma formation en création d’entreprise. Cliquez ici pour y accéder.",
-  en: "Coming soon: discover my business creation training. Click here to access it.",
-  es: "Próximamente: descubre mi formación en creación de empresas. Haz clic aquí para acceder.",
-  zh: "即将推出：我的创业培训课程。点击此处进入。"
+  fr: "⏳🎉 Prochainement, retrouvez ma formation en création d’entreprise. Cliquez ici pour y accéder.",
+  en: "⏳🎉 Coming soon: discover my business creation training. Click here to access it.",
+  es: "⏳🎉 Próximamente: descubre mi formación en creación de empresas. Haz clic aquí para acceder.",
+  zh: "⏳🎉 即将推出：我的创业培训课程。点击此处进入。"
 };
 
   function updateWidgetText() {
