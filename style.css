@@ -443,7 +443,7 @@ html, body {
 
   /* Conteneur mobile */
   .FondPortefolio {
-    background: url("images/Portefolioinmobile.PNG") center / cover no-repeat;
+    background: url("images/Portefolioinmobile.png") center / cover no-repeat;
   }
 
   /* Cache l’image desktop */
