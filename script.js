@@ -37,13 +37,15 @@ langMenu.querySelectorAll("button").forEach(btn => {
 });
 }
 
-  /* ================= WIDGET FORMATION ================= */
+/* ================= WIDGET DRAG DESKTOP + MOBILE ================= */
 
-  const widget = document.getElementById("formationWidget");
+const widget = document.getElementById("formationWidget");
 
 let isDragging = false;
-let offsetX, offsetY;
+let offsetX = 0;
+let offsetY = 0;
 
+/* ===== DESKTOP ===== */
 widget.addEventListener("mousedown", (e) => {
   isDragging = true;
   offsetX = e.clientX - widget.offsetLeft;
@@ -58,6 +60,27 @@ document.addEventListener("mousemove", (e) => {
 });
 
 document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+/* ===== MOBILE ===== */
+widget.addEventListener("touchstart", (e) => {
+  const touch = e.touches[0];
+  isDragging = true;
+  offsetX = touch.clientX - widget.offsetLeft;
+  offsetY = touch.clientY - widget.offsetTop;
+});
+
+document.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+
+  const touch = e.touches[0];
+
+  widget.style.left = (touch.clientX - offsetX) + "px";
+  widget.style.top = (touch.clientY - offsetY) + "px";
+});
+
+document.addEventListener("touchend", () => {
   isDragging = false;
 });
 
