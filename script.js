@@ -98,7 +98,7 @@ widget.addEventListener("click", (e) => {
     return;
   }
 
-  window.location.href = "https://ton-site-de-formation.com";
+  window.location.href = "https://inesstlaurent22.github.io/FORMATION-ENTREPRO/";
 });
 
 /* ================= HELPERS ================= */
