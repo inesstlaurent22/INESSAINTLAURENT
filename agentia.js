@@ -4,70 +4,150 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const chatbotToggle = document.getElementById("chatbot-toggle");
   const chatbotBox = document.getElementById("chatbot-box");
-  const chatbotSend = document.getElementById("chatbot-send");
-  const chatbotInput = document.getElementById("chatbot-input");
   const chatbotMessages = document.getElementById("chatbot-messages");
 
-  // sécurité si éléments absents
-  if (!chatbotToggle || !chatbotBox) return;
+  if (!chatbotToggle || !chatbotBox || !chatbotMessages) return;
 
-  /* ===== OUVERTURE / FERMETURE ===== */
+  /* ================= DATA ================= */
+
+  const FAQ = {
+
+    offre: {
+      title: "🎯 Offre & positionnement",
+      questions: [
+        {
+          q: "Que proposes-tu exactement ?",
+          r: "J’aide les entreprises à attirer plus de clients et augmenter leurs ventes grâce à des stratégies marketing et des systèmes automatisés avec l’IA."
+        },
+        {
+          q: "À qui s’adressent tes services ?",
+          r: "Aux entreprises qui veulent se développer, gagner du temps et améliorer leur rentabilité."
+        },
+        {
+          q: "En quoi ton approche est différente ?",
+          r: "Je combine stratégie, marketing et automatisation pour créer un système performant et continu."
+        },
+        {
+          q: "Est-ce adapté à mon activité ?",
+          r: "Oui, chaque stratégie est personnalisée selon ton activité et tes objectifs."
+        }
+      ]
+    },
+
+    prix: {
+      title: "💰 Prix & modalités",
+      questions: [
+        {
+          q: "Combien coûtent tes services ?",
+          r: "Les tarifs varient selon les besoins. Chaque projet est personnalisé."
+        },
+        {
+          q: "Puis-je avoir un devis ?",
+          r: "Oui, après un échange rapide je te propose une solution adaptée."
+        }
+      ]
+    },
+
+    resultats: {
+      title: "🚀 Résultats",
+      questions: [
+        {
+          q: "Combien de temps pour voir des résultats ?",
+          r: "Certains résultats sont rapides, mais une croissance solide se construit sur plusieurs semaines."
+        },
+        {
+          q: "Garantis-tu des résultats ?",
+          r: "Je garantis une méthode optimisée. Les résultats dépendent aussi de ton activité."
+        }
+      ]
+    },
+
+    ia: {
+      title: "🤖 IA & automatisation",
+      questions: [
+        {
+          q: "Comment fonctionne l’IA ?",
+          r: "Elle automatise certaines tâches pour gagner du temps et améliorer l’efficacité."
+        },
+        {
+          q: "Est-ce compliqué ?",
+          r: "Non, tout est simple et accessible."
+        }
+      ]
+    },
+
+    contact: {
+      title: "📞 Contact",
+      questions: [
+        {
+          q: "Comment te contacter ?",
+          r: "Via le portfolio, LinkedIn ou email."
+        },
+        {
+          q: "Comment commencer ?",
+          r: "Contacte-moi pour échanger sur ton projet."
+        }
+      ]
+    }
+
+  };
+
+  /* ================= UI ================= */
+
   chatbotToggle.addEventListener("click", () => {
-    chatbotBox.style.display =
-      chatbotBox.style.display === "flex" ? "none" : "flex";
+    const isOpen = chatbotBox.style.display === "flex";
+
+    chatbotBox.style.display = isOpen ? "none" : "flex";
+
+    if (!isOpen) {
+      showThemes();
+    }
   });
 
-  /* ===== ENVOI MESSAGE ===== */
-  chatbotSend?.addEventListener("click", sendMessage);
+  /* ================= THEMES ================= */
 
-  chatbotInput?.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessage();
-  });
+  function showThemes() {
+    chatbotMessages.innerHTML = "";
 
-  function sendMessage() {
-    const text = chatbotInput.value.trim();
-    if (!text) return;
+    Object.keys(FAQ).forEach(key => {
+      const div = document.createElement("div");
+      div.className = "message-bot";
+      div.style.cursor = "pointer";
+      div.style.fontWeight = "700";
+      div.textContent = FAQ[key].title;
 
-    addMessage(text, "user");
-    chatbotInput.value = "";
+      div.addEventListener("click", () => showQuestions(key));
 
-    fakeAIResponse(text);
+      chatbotMessages.appendChild(div);
+    });
   }
 
-  function addMessage(text, type) {
+  /* ================= QUESTIONS ================= */
+
+  function showQuestions(category) {
+    chatbotMessages.innerHTML = "";
+
+    FAQ[category].questions.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "message-bot";
+      div.style.cursor = "pointer";
+      div.textContent = "👉 " + item.q;
+
+      div.addEventListener("click", () => showAnswer(item.r));
+
+      chatbotMessages.appendChild(div);
+    });
+  }
+
+  /* ================= REPONSE ================= */
+
+  function showAnswer(answer) {
     const div = document.createElement("div");
-    div.className = type === "user" ? "message-user" : "message-bot";
-    div.textContent = text;
+    div.className = "message-bot";
+    div.textContent = answer;
 
     chatbotMessages.appendChild(div);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  }
-
-  /* ================= IA SIMPLIFIÉE ================= */
-  function fakeAIResponse(text) {
-    let response = "Je n’ai pas compris ta question.";
-
-    const t = text.toLowerCase();
-
-    if (t.includes("offre")) {
-      response = "Je propose un accompagnement stratégique en 3 étapes : diagnostic, stratégie et pilotage.";
-    }
-
-    else if (t.includes("prix") || t.includes("tarif")) {
-      response = "Les tarifs dépendent du projet. Contacte-moi via LinkedIn ou email.";
-    }
-
-    else if (t.includes("contact")) {
-      response = "Tu peux me contacter via LinkedIn ou email directement sur le portfolio.";
-    }
-
-    else if (t.includes("formation")) {
-      response = "Une formation en création d’entreprise sera bientôt disponible.";
-    }
-
-    setTimeout(() => {
-      addMessage(response, "bot");
-    }, 500);
   }
 
 });
