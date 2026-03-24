@@ -623,6 +623,8 @@ html, body {
 
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+
+  min-width: max-content; /* 🔥 largeur auto selon texte */
 }
 
 .lang-menu.active {
@@ -640,6 +642,8 @@ html, body {
   text-align: left;
   color: #111;
 
+  white-space: nowrap; /* 🔥 empêche retour à la ligne */
+  
   transition: background 0.2s ease;
 }
 
