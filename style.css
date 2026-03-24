@@ -33,53 +33,7 @@ html, body {
 }
 
 /* ================= WIDGET FORMATION ================= */
-.formation-widget {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  max-width: 340px;
-  padding: 18px 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  border: 1px solid rgba(255,255,255,0.4);
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  touch-action: none;
-}
 
-.formation-widget:hover {
-  transform: scale(1.03);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-}
-
-.widget-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 22px;
-  background: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.widget-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-/* ================= CHATBOT ================= */
 
 /* ================= CHATBOT CONTAINER ================= */
 #chatbot-container {
