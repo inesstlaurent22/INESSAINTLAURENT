@@ -497,22 +497,21 @@ html, body {
 
   display: flex;
   flex-direction: column;
-
-  font-weight: 600; /* base plus lisible */
 }
 
-/* ❌ entreprise NON en gras */
+/* 🔥 poste bien en valeur */
 .card-btn strong {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+/* entreprise normale */
+.card-btn span {
   font-weight: 400;
 }
 
-/* 🔥 renforce visuellement la première ligne */
-.card-btn br:first-of-type {
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* ✨ secteur plus discret */
+/* secteur discret */
 .card-btn em {
   opacity: 0.65;
   font-size: 13px;
