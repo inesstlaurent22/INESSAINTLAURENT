@@ -254,6 +254,37 @@ html, body {
   border-radius: 10px;
 }
 
+/* ================= BULLES SPÉCIALES ================= */
+.message-intro {
+  align-self: center;
+  background: #eaf0ff;
+  color: #1a2a6c;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 600;
+}
+
+.message-section {
+  align-self: center;
+  background: #fff3e6;
+  color: #7a4b00;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+/* bouton retour */
+.chatbot-back {
+  margin-top: 10px;
+  align-self: center;
+  background: #3A6EFF;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: center;
+}
 
 /* ================= BLOCS ================= */
 .bloc {
