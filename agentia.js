@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation();
 
     const isOpen = chatbotBox.classList.contains("active");
-
     chatbotBox.classList.toggle("active");
 
     if (!isOpen) showThemes();
@@ -57,57 +56,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  /* ================= HELPERS ================= */
+
+  function scrollToBottom() {
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function addBotMessage(text) {
+    const div = document.createElement("div");
+    div.className = "message-bot";
+    div.textContent = text;
+
+    chatbotMessages.appendChild(div);
+    scrollToBottom();
+  }
+
+  function addUserMessage(text) {
+    const div = document.createElement("div");
+    div.className = "message-user";
+    div.textContent = text;
+
+    chatbotMessages.appendChild(div);
+    scrollToBottom();
+  }
+
   /* ================= THEMES ================= */
 
   function showThemes() {
     chatbotMessages.innerHTML = "";
+
+    addBotMessage("Bonjour 👋 Choisis un sujet :");
 
     Object.keys(FAQ).forEach(key => {
       const div = document.createElement("div");
       div.className = "message-bot";
       div.textContent = FAQ[key].title;
 
-      div.addEventListener("click", () => showQuestions(key));
+      div.addEventListener("click", () => {
+        addUserMessage(FAQ[key].title);
+        showQuestions(key);
+      });
 
       chatbotMessages.appendChild(div);
     });
+
+    scrollToBottom();
   }
 
   /* ================= QUESTIONS ================= */
 
   function showQuestions(category) {
-    chatbotMessages.innerHTML = "";
+
+    addBotMessage("Voici les questions disponibles :");
 
     FAQ[category].questions.forEach(item => {
       const div = document.createElement("div");
       div.className = "message-bot";
       div.textContent = "👉 " + item.q;
 
-      div.addEventListener("click", () => showAnswer(item.r));
+      div.addEventListener("click", () => {
+        showAnswer(item.q, item.r);
+      });
 
       chatbotMessages.appendChild(div);
     });
+
+    scrollToBottom();
   }
 
   /* ================= REPONSES ================= */
-function showThemes() {
-  chatbotMessages.innerHTML = "";
 
-  const welcome = document.createElement("div");
-  welcome.className = "message-bot";
-  welcome.textContent = "Bonjour 👋 Choisis un sujet :";
+  function showAnswer(question, answer) {
 
-  chatbotMessages.appendChild(welcome);
+    // message utilisateur
+    addUserMessage(question);
 
-  Object.keys(FAQ).forEach(key => {
-    const div = document.createElement("div");
-    div.className = "message-bot";
-    div.textContent = FAQ[key].title;
+    // simulation délai réponse
+    setTimeout(() => {
+      addBotMessage(answer);
+    }, 400);
+  }
 
-    div.addEventListener("click", () => showQuestions(key));
-
-    chatbotMessages.appendChild(div);
-  });
-}
-  
 });
