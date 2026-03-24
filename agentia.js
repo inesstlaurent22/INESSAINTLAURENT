@@ -90,13 +90,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= REPONSES ================= */
+function showAnswer(question, answer) {
 
-  function showAnswer(answer) {
-    const div = document.createElement("div");
-    div.className = "message-bot";
-    div.textContent = answer;
+  // message user
+  const userDiv = document.createElement("div");
+  userDiv.className = "message-user";
+  userDiv.textContent = question;
 
-    chatbotMessages.appendChild(div);
-  }
+  chatbotMessages.appendChild(userDiv);
 
+  // réponse bot (petit délai pour effet naturel)
+  setTimeout(() => {
+    const botDiv = document.createElement("div");
+    botDiv.className = "message-bot";
+    botDiv.textContent = answer;
+
+    chatbotMessages.appendChild(botDiv);
+
+    // scroll auto
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+  }, 400);
+}
+  
 });
