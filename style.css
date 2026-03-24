@@ -79,6 +79,93 @@ html, body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
+/* ================= CHATBOT ================= */
+
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* bouton */
+#chatbot-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #3A6EFF;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* box */
+#chatbot-box {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  height: 420px;
+  background: #111;
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+/* header */
+#chatbot-header {
+  background: #3A6EFF;
+  padding: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* messages */
+#chatbot-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+/* input */
+#chatbot-input-area {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#chatbot-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: #111;
+  color: white;
+}
+
+#chatbot-send {
+  width: 50px;
+  border: none;
+  background: #3A6EFF;
+  color: white;
+  cursor: pointer;
+}
+
+/* bulles */
+.message-user {
+  text-align: right;
+  margin: 6px 0;
+}
+
+.message-bot {
+  text-align: left;
+  margin: 6px 0;
+}
+
 /* ================= BLOCS ================= */
 .bloc {
   position: absolute;
