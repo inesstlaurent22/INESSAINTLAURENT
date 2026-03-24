@@ -90,27 +90,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= REPONSES ================= */
-function showAnswer(question, answer) {
+function showThemes() {
+  chatbotMessages.innerHTML = "";
 
-  // message user
-  const userDiv = document.createElement("div");
-  userDiv.className = "message-user";
-  userDiv.textContent = question;
+  const welcome = document.createElement("div");
+  welcome.className = "message-bot";
+  welcome.textContent = "Bonjour 👋 Choisis un sujet :";
 
-  chatbotMessages.appendChild(userDiv);
+  chatbotMessages.appendChild(welcome);
 
-  // réponse bot (petit délai pour effet naturel)
-  setTimeout(() => {
-    const botDiv = document.createElement("div");
-    botDiv.className = "message-bot";
-    botDiv.textContent = answer;
+  Object.keys(FAQ).forEach(key => {
+    const div = document.createElement("div");
+    div.className = "message-bot";
+    div.textContent = FAQ[key].title;
 
-    chatbotMessages.appendChild(botDiv);
+    div.addEventListener("click", () => showQuestions(key));
 
-    // scroll auto
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
-  }, 400);
+    chatbotMessages.appendChild(div);
+  });
 }
   
 });
