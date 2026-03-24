@@ -38,7 +38,87 @@ langMenu.querySelectorAll("button").forEach(btn => {
 }
 
 /* ================= WIDGET DRAG FULL MOBILE FIX ================= */
+const widget = document.getElementById("giftWidget");
 
+if (widget) {
+
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  /* ===== START ===== */
+  widget.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    offsetX = e.clientX - widget.offsetLeft;
+    offsetY = e.clientY - widget.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    const maxX = window.innerWidth - widget.offsetWidth;
+    const maxY = window.innerHeight - widget.offsetHeight;
+
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    widget.style.left = Math.max(0, Math.min(x, maxX)) + "px";
+    widget.style.top = Math.max(0, Math.min(y, maxY)) + "px";
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  /* ===== MOBILE ===== */
+  widget.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+
+    isDragging = true;
+    startX = touch.clientX;
+    startY = touch.clientY;
+
+    offsetX = touch.clientX - widget.offsetLeft;
+    offsetY = touch.clientY - widget.offsetTop;
+  }, { passive: false });
+
+  document.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+
+    e.preventDefault();
+
+    const touch = e.touches[0];
+
+    const maxX = window.innerWidth - widget.offsetWidth;
+    const maxY = window.innerHeight - widget.offsetHeight;
+
+    let x = touch.clientX - offsetX;
+    let y = touch.clientY - offsetY;
+
+    widget.style.left = Math.max(0, Math.min(x, maxX)) + "px";
+    widget.style.top = Math.max(0, Math.min(y, maxY)) + "px";
+  }, { passive: false });
+
+  document.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  /* ===== CLICK SAFE ===== */
+  widget.addEventListener("click", (e) => {
+    const dx = Math.abs((e.clientX || startX) - startX);
+    const dy = Math.abs((e.clientY || startY) - startY);
+
+    if (dx > 5 || dy > 5) {
+      e.preventDefault(); // bloque seulement si drag
+    }
+  });
+
+}
 
 /* ================= HELPERS ================= */
 function experienceCard(role, company, sector, tasks) {
