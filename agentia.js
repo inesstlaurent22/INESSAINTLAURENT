@@ -176,7 +176,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= IA ================= */
 
-  async function sendToAI(text) {
+  /* ================= IA ================= */
+
+async function sendToAI(text) {
 
   const userDiv = document.createElement("div");
   userDiv.className = "message-user";
@@ -200,24 +202,31 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify({ message: text })
     });
 
+    // 🔥 IMPORTANT : vérifier réponse HTTP
+    if (!res.ok) {
+      loading.textContent = "Erreur serveur (endpoint)";
+      return;
+    }
+
     const data = await res.json();
 
-    console.log("DEBUG IA:", data); // 🔥 IMPORTANT
+    console.log("DEBUG IA:", data);
 
-    if (!res.ok) {
-      loading.textContent = "Erreur API";
+    // 🔥 sécurité
+    if (!data || typeof data !== "object") {
+      loading.textContent = "Réponse invalide";
       return;
     }
 
     if (data.error) {
-      loading.textContent = "Erreur IA : quota ou clé API";
+      loading.textContent = "Erreur IA (quota ou clé)";
       return;
     }
 
-    loading.textContent = data.reply || "Réponse vide";
+    loading.textContent = data.reply || "Aucune réponse";
 
   } catch (err) {
-    console.error(err);
+    console.error("FETCH ERROR:", err);
     loading.textContent = "Erreur connexion serveur";
   }
 }
