@@ -285,7 +285,7 @@ const CONTENT = {
 
       ${experienceCard(
         "<strong>CEO & Développeuse Web</strong>",
-        "KIT IN",
+        "ISL CONSULTING",
         "Entrepreneuriat & digital",
         [
           "→ Conception et développement d’une formation en ligne dédiée à la création d’entreprise",
@@ -517,7 +517,7 @@ en: {
 
       ${experienceCard(
         "<strong>CEO & Web Developer</strong>",
-        "KIT IN",
+        "ISL CONSULTING",
         "Entrepreneurship & digital",
         [
           "→ Design and development of an online training program dedicated to business creation",
@@ -749,7 +749,7 @@ es: {
 
       ${experienceCard(
         "<strong>CEO & Desarrolladora Web</strong>",
-        "KIT IN",
+        "ISL CONSULTING",
         "Emprendimiento y digital",
         [
           "→ Diseño y desarrollo de una formación online dedicada a la creación de empresas",
@@ -981,7 +981,7 @@ zh: {
 
       ${experienceCard(
         "<strong>CEO & 网页开发者</strong>",
-        "KIT IN",
+        "ISL CONSULTING",
         "创业与数字化",
         [
           "→ 设计并开发企业创建相关的在线培训项目",
