@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        message: item.q
+        message: item.q + " / Contexte : " + item.r
       })
     });
 
