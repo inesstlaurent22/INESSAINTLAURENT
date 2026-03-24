@@ -93,16 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* ================= UI ================= */
+chatbotToggle.addEventListener("click", () => {
+  const isOpen = chatbotBox.classList.contains("active");
 
-  chatbotToggle.addEventListener("click", () => {
-    const isOpen = chatbotBox.style.display === "flex";
+  chatbotBox.classList.toggle("active");
 
-    chatbotBox.style.display = isOpen ? "none" : "flex";
-
-    if (!isOpen) {
-      showThemes();
-    }
-  });
+  if (!isOpen) {
+    showThemes();
+  }
+});
 
   /* ================= THEMES ================= */
 
