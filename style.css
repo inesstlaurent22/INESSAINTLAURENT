@@ -483,6 +483,7 @@ html, body {
   gap: 20px;
 }
 
+/* base : tout en normal */
 .card-btn {
   width: 100%;
   padding: 20px 22px;
@@ -498,23 +499,24 @@ html, body {
   display: flex;
   flex-direction: column;
 
-  font-weight: 400; /* 🔥 IMPORTANT : base normal */
+  font-weight: 400 !important; /* 🔥 force tout en normal */
 }
 
 /* 🔥 uniquement le poste en gras */
 .card-btn strong {
-  font-weight: 800;
+  font-weight: 800 !important;
   font-size: 18px;
   letter-spacing: 0.2px;
 }
 
-/* entreprise (ex: Gearbooker) = normal */
-.card-btn {
-  color: inherit;
+/* 🔥 force le texte simple (ex: Gearbooker) à rester normal */
+.card-btn br + * {
+  font-weight: 400 !important;
 }
 
 /* secteur discret */
 .card-btn em {
+  font-weight: 400 !important;
   opacity: 0.65;
   font-size: 13px;
   margin-top: 4px;
