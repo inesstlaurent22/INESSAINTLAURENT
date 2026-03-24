@@ -174,11 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
   }
 
-  /* ================= IA ================= */
-
-  /* ================= IA ================= */
-
-async function sendToAI(text) {
+ async function sendToAI(text) {
 
   const userDiv = document.createElement("div");
   userDiv.className = "message-user";
@@ -202,28 +198,27 @@ async function sendToAI(text) {
       body: JSON.stringify({ message: text })
     });
 
-    // 🔥 IMPORTANT : vérifier réponse HTTP
     if (!res.ok) {
-      loading.textContent = "Erreur serveur (endpoint)";
+      loading.textContent = "Erreur serveur";
       return;
     }
 
     const data = await res.json();
-
     console.log("DEBUG IA:", data);
 
-    // 🔥 sécurité
-    if (!data || typeof data !== "object") {
-      loading.textContent = "Réponse invalide";
+    // ✅ gestion robuste
+    const reply =
+      data?.reply ||
+      data?.body?.reply ||
+      data?.data?.reply ||
+      null;
+
+    if (!reply) {
+      loading.textContent = "Réponse vide";
       return;
     }
 
-    if (data.error) {
-      loading.textContent = "Erreur IA (quota ou clé)";
-      return;
-    }
-
-    loading.textContent = data.reply || "Aucune réponse";
+    loading.textContent = reply;
 
   } catch (err) {
     console.error("FETCH ERROR:", err);
