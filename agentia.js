@@ -9,34 +9,86 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= DATA ================= */
 
   const FAQ = {
+
     offre: {
-      title: "🎯 Offre",
+      title: "🎯 Offre & positionnement",
       questions: [
         {
-          q: "Que proposes-tu ?",
-          r: "J’aide les entreprises à développer leur chiffre d’affaires grâce au marketing et à l’IA."
+          q: "Que proposes-tu exactement ?",
+          r: "J’aide les entreprises à attirer plus de clients et augmenter leurs ventes grâce à des stratégies marketing et des systèmes automatisés avec l’IA."
+        },
+        {
+          q: "À qui s’adressent tes services ?",
+          r: "Aux entreprises qui veulent se développer, gagner du temps et améliorer leur rentabilité."
+        },
+        {
+          q: "En quoi ton approche est différente ?",
+          r: "Je combine stratégie, marketing et automatisation pour créer un système performant et continu."
+        },
+        {
+          q: "Est-ce adapté à mon activité ?",
+          r: "Oui, chaque stratégie est personnalisée selon ton activité et tes objectifs."
         }
       ]
     },
+
     prix: {
-      title: "💰 Prix",
+      title: "💰 Prix & modalités",
       questions: [
         {
-          q: "Combien ça coûte ?",
-          r: "Les tarifs dépendent du projet. Contacte-moi pour une proposition adaptée."
+          q: "Combien coûtent tes services ?",
+          r: "Les tarifs varient selon les besoins. Chaque projet est personnalisé."
+        },
+        {
+          q: "Puis-je avoir un devis ?",
+          r: "Oui, après un échange rapide je te propose une solution adaptée."
         }
       ]
     },
+
+    resultats: {
+      title: "🚀 Résultats",
+      questions: [
+        {
+          q: "Combien de temps pour voir des résultats ?",
+          r: "Certains résultats sont rapides, mais une croissance solide se construit sur plusieurs semaines."
+        },
+        {
+          q: "Garantis-tu des résultats ?",
+          r: "Je garantis une méthode optimisée. Les résultats dépendent aussi de ton activité."
+        }
+      ]
+    },
+
+    ia: {
+      title: "🤖 IA & automatisation",
+      questions: [
+        {
+          q: "Comment fonctionne l’IA ?",
+          r: "Elle automatise certaines tâches pour gagner du temps et améliorer l’efficacité."
+        },
+        {
+          q: "Est-ce compliqué ?",
+          r: "Non, tout est simple et accessible."
+        }
+      ]
+    },
+
     contact: {
       title: "📞 Contact",
       questions: [
         {
           q: "Comment te contacter ?",
-          r: "Via LinkedIn ou email directement sur le portfolio."
+          r: "Via le portfolio, LinkedIn ou email."
+        },
+        {
+          q: "Comment commencer ?",
+          r: "Contacte-moi pour échanger sur ton projet."
         }
       ]
     }
-  };
+
+  }
 
   /* ================= OUVERTURE ================= */
 
