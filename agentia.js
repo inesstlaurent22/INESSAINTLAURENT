@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+
+  document.addEventListener("DOMContentLoaded", () => {
 
   const chatbotToggle = document.getElementById("chatbot-toggle");
   const chatbotBox = document.getElementById("chatbot-box");
@@ -88,105 +90,107 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     }
 
-  }
+  };
 
-  /* ================= OUVERTURE ================= */
+  let clickedQuestions = new Set();
+  let totalQuestions = 0;
 
-  chatbotToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
+  /* ================= OPEN ================= */
 
+  chatbotToggle.addEventListener("click", () => {
     const isOpen = chatbotBox.classList.contains("active");
     chatbotBox.classList.toggle("active");
 
     if (!isOpen) showThemes();
   });
 
-  /* fermeture extérieure */
-  document.addEventListener("click", (e) => {
-    if (!chatbotBox.contains(e.target) && !chatbotToggle.contains(e.target)) {
-      chatbotBox.classList.remove("active");
-    }
-  });
-
-  /* ================= HELPERS ================= */
-
-  function scrollToBottom() {
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  }
-
-  function addBotMessage(text) {
-    const div = document.createElement("div");
-    div.className = "message-bot";
-    div.textContent = text;
-
-    chatbotMessages.appendChild(div);
-    scrollToBottom();
-  }
-
-  function addUserMessage(text) {
-    const div = document.createElement("div");
-    div.className = "message-user";
-    div.textContent = text;
-
-    chatbotMessages.appendChild(div);
-    scrollToBottom();
-  }
-
   /* ================= THEMES ================= */
 
   function showThemes() {
     chatbotMessages.innerHTML = "";
+    clickedQuestions.clear();
 
-    addBotMessage("Bonjour 👋 Choisis un sujet :");
+    // total questions
+    totalQuestions = Object.values(FAQ)
+      .reduce((acc, cat) => acc + cat.questions.length, 0);
+
+    addMessage("Bonjour 👋 Choisis un sujet :", "intro");
 
     Object.keys(FAQ).forEach(key => {
-      const div = document.createElement("div");
-      div.className = "message-bot";
-      div.textContent = FAQ[key].title;
-
-      div.addEventListener("click", () => {
-        addUserMessage(FAQ[key].title);
-        showQuestions(key);
-      });
-
+      const div = createClickable(FAQ[key].title, () => showQuestions(key));
       chatbotMessages.appendChild(div);
     });
-
-    scrollToBottom();
   }
 
   /* ================= QUESTIONS ================= */
 
   function showQuestions(category) {
+    chatbotMessages.innerHTML = "";
 
-    addBotMessage("Voici les questions disponibles :");
+    addMessage("Voici les questions disponibles :", "section");
 
     FAQ[category].questions.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "message-bot";
-      div.textContent = "👉 " + item.q;
-
-      div.addEventListener("click", () => {
-        showAnswer(item.q, item.r);
+      const div = createClickable("👉 " + item.q, () => {
+        showAnswer(item);
       });
-
       chatbotMessages.appendChild(div);
     });
-
-    scrollToBottom();
   }
 
-  /* ================= REPONSES ================= */
+  /* ================= ANSWER ================= */
 
-  function showAnswer(question, answer) {
+  function showAnswer(item) {
+    const div = document.createElement("div");
+    div.className = "message-bot";
+    div.textContent = item.r;
 
-    // message utilisateur
-    addUserMessage(question);
+    chatbotMessages.appendChild(div);
 
-    // simulation délai réponse
-    setTimeout(() => {
-      addBotMessage(answer);
-    }, 400);
+    clickedQuestions.add(item.q);
+
+    checkIfFinished();
+  }
+
+  /* ================= CHECK FIN ================= */
+
+  function checkIfFinished() {
+    if (clickedQuestions.size === totalQuestions) {
+      showBackButton();
+    }
+  }
+
+  /* ================= BACK BUTTON ================= */
+
+  function showBackButton() {
+    const btn = document.createElement("div");
+    btn.className = "chatbot-back";
+    btn.textContent = "⬅ Retour au menu";
+
+    btn.addEventListener("click", showThemes);
+
+    chatbotMessages.appendChild(btn);
+  }
+
+  /* ================= HELPERS ================= */
+
+  function addMessage(text, type) {
+    const div = document.createElement("div");
+
+    if (type === "intro") div.className = "message-intro";
+    else if (type === "section") div.className = "message-section";
+    else div.className = "message-bot";
+
+    div.textContent = text;
+    chatbotMessages.appendChild(div);
+  }
+
+  function createClickable(text, action) {
+    const div = document.createElement("div");
+    div.className = "message-bot";
+    div.textContent = text;
+    div.style.cursor = "pointer";
+    div.addEventListener("click", action);
+    return div;
   }
 
 });
