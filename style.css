@@ -515,7 +515,7 @@ html, body {
   filter: brightness(1.1);
 }
 
-/* ================= LANGUAGE SWITCH ================= */
+
 /* ================= LANGUAGE SWITCH (STYLE WIDGET) ================= */
 #lang-switch {
   position: fixed;
@@ -530,8 +530,8 @@ html, body {
   align-items: center;
   justify-content: center;
 
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: auto;
   border-radius: 16px;
   border: none;
   cursor: pointer;
