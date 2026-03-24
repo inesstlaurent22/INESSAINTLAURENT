@@ -497,18 +497,20 @@ html, body {
 
   display: flex;
   flex-direction: column;
+
+  font-weight: 400; /* 🔥 IMPORTANT : base normal */
 }
 
-/* 🔥 poste bien en valeur */
+/* 🔥 uniquement le poste en gras */
 .card-btn strong {
   font-weight: 800;
   font-size: 18px;
   letter-spacing: 0.2px;
 }
 
-/* entreprise normale */
-.card-btn span {
-  font-weight: 400;
+/* entreprise (ex: Gearbooker) = normal */
+.card-btn {
+  color: inherit;
 }
 
 /* secteur discret */
