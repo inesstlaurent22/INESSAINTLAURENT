@@ -483,7 +483,6 @@ html, body {
   gap: 20px;
 }
 
-/* base : tout en normal */
 .card-btn {
   width: 100%;
   padding: 20px 22px;
@@ -494,29 +493,36 @@ html, body {
   cursor: pointer;
 
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.3; /* 🔥 réduit l’espace entre lignes */
 
   display: flex;
   flex-direction: column;
 
-  font-weight: 400 !important; /* 🔥 force tout en normal */
+  font-weight: 400; /* base normal */
 }
 
-/* 🔥 uniquement le poste en gras */
+/* 🔥 poste (titre) */
 .card-btn strong {
-  font-weight: 800 !important;
+  font-weight: 800;
   font-size: 18px;
   letter-spacing: 0.2px;
+  margin-bottom: 2px; /* 🔥 espace très léger avec l’entreprise */
+  display: block;
 }
 
-/* 🔥 force le texte simple (ex: Gearbooker) à rester normal */
-.card-btn br + * {
-  font-weight: 400 !important;
+/* 🔥 supprime le <br> inutile après le titre */
+.card-btn strong + br {
+  display: none;
 }
 
-/* secteur discret */
+/* entreprise (ex: Gearbooker) */
+.card-btn strong + br + * {
+  font-weight: 400;
+}
+
+/* secteur */
 .card-btn em {
-  font-weight: 400 !important;
+  font-weight: 400;
   opacity: 0.65;
   font-size: 13px;
   margin-top: 4px;
