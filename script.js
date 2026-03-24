@@ -43,14 +43,17 @@ const widget = document.getElementById("formationWidget");
 if (widget) {
 
   let isDragging = false;
-  let hasMoved = false;
+  let startX = 0;
+  let startY = 0;
   let offsetX = 0;
   let offsetY = 0;
 
   /* ===== DESKTOP ===== */
   widget.addEventListener("mousedown", (e) => {
     isDragging = true;
-    hasMoved = false;
+
+    startX = e.clientX;
+    startY = e.clientY;
 
     offsetX = e.clientX - widget.offsetLeft;
     offsetY = e.clientY - widget.offsetTop;
@@ -58,8 +61,6 @@ if (widget) {
 
   document.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
-
-    hasMoved = true;
 
     const maxX = window.innerWidth - widget.offsetWidth;
     const maxY = window.innerHeight - widget.offsetHeight;
@@ -80,7 +81,9 @@ if (widget) {
     const touch = e.touches[0];
 
     isDragging = true;
-    hasMoved = false;
+
+    startX = touch.clientX;
+    startY = touch.clientY;
 
     offsetX = touch.clientX - widget.offsetLeft;
     offsetY = touch.clientY - widget.offsetTop;
@@ -92,7 +95,6 @@ if (widget) {
     e.preventDefault();
 
     const touch = e.touches[0];
-    hasMoved = true;
 
     const maxX = window.innerWidth - widget.offsetWidth;
     const maxY = window.innerHeight - widget.offsetHeight;
@@ -108,12 +110,22 @@ if (widget) {
     isDragging = false;
   });
 
-  /* ===== CLIC (corrigé) ===== */
+  /* ===== CLIC INTELLIGENT ===== */
   widget.addEventListener("click", (e) => {
-    if (hasMoved) {
-      e.preventDefault(); // bloque seulement si drag
+
+    const clickX = e.clientX || startX;
+    const clickY = e.clientY || startY;
+
+    const dx = Math.abs(clickX - startX);
+    const dy = Math.abs(clickY - startY);
+
+    const moved = dx > 5 || dy > 5;
+
+    if (moved) {
+      e.preventDefault(); // bloque uniquement si vrai drag
     }
-    // sinon → le <a> gère la redirection automatiquement
+
+    // sinon → le <a> fonctionne normalement (redirige)
   });
 
 }
