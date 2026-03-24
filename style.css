@@ -128,7 +128,7 @@ html, body {
 /* messages */
 #chatbot-messages {
   flex: 1;
-  padding: 12px;
+  padding: 22px;
   overflow-y: auto;
   font-size: 14px;
   color: white;
