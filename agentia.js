@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbotSend = document.getElementById("chatbot-send");
   const chatbotInput = document.getElementById("chatbot-input");
 
-  if (!chatbotToggle || !chatbotBox || !chatbotMessages) return;
-
-  let hasNavigated = false;
+  if (!chatbotToggle || !chatbotBox || !chatbotMessages || !chatbotSend || !chatbotInput) return;
 
   /* ================= DATA ================= */
 
@@ -102,14 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= OPEN ================= */
 
-  chatbotToggle.addEventListener("click", () => {
-    const isOpen = chatbotBox.classList.contains("active");
+  chatbotToggle.onclick = () => {
     chatbotBox.classList.toggle("active");
+    showThemes();
+  };
 
-    if (!isOpen) showThemes();
-  });
-
-  /* ================= TOP BUTTON ================= */
+  /* ================= NAV ================= */
 
   function createTopButton(type = "close") {
     let btn = document.querySelector(".chatbot-back-top");
@@ -120,16 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
       chatbotBox.appendChild(btn);
     }
 
-    const newBtn = btn.cloneNode(true);
-    btn.replaceWith(newBtn);
-    btn = newBtn;
-
     if (type === "close") {
       btn.textContent = "✕";
       btn.onclick = () => chatbotBox.classList.remove("active");
     } else {
       btn.textContent = "←";
-      btn.onclick = () => showThemes();
+      btn.onclick = showThemes;
     }
   }
 
@@ -174,86 +166,73 @@ document.addEventListener("DOMContentLoaded", () => {
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
   }
 
- async function sendToAI(text) {
+  /* ================= IA ================= */
 
-  const userDiv = document.createElement("div");
-  userDiv.className = "message-user";
-  userDiv.textContent = text;
-  chatbotMessages.appendChild(userDiv);
+  async function sendToAI(text) {
 
-  const loading = document.createElement("div");
-  loading.className = "message-answer";
-  loading.textContent = "...";
-  chatbotMessages.appendChild(loading);
+    const userDiv = document.createElement("div");
+    userDiv.className = "message-user";
+    userDiv.textContent = text;
+    chatbotMessages.appendChild(userDiv);
 
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    const loading = document.createElement("div");
+    loading.className = "message-answer";
+    loading.textContent = "...";
+    chatbotMessages.appendChild(loading);
 
-  try {
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-    const res = await fetch("https://eop1ak3sxerl3b3.m.pipedream.net", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: text })
-    });
+    try {
 
-    if (!res.ok) {
-      loading.textContent = "Erreur serveur";
-      return;
+      const res = await fetch("https://eop1ak3sxerl3b3.m.pipedream.net", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+
+      const reply =
+        data?.reply ||
+        data?.body?.reply ||
+        data?.data?.reply;
+
+      loading.textContent = reply || "Réponse vide";
+
+    } catch (err) {
+      loading.textContent = "Erreur connexion serveur";
     }
-
-    const data = await res.json();
-    console.log("DEBUG IA:", data);
-
-    // ✅ gestion robuste
-    const reply =
-      data?.reply ||
-      data?.body?.reply ||
-      data?.data?.reply ||
-      null;
-
-    if (!reply) {
-      loading.textContent = "Réponse vide";
-      return;
-    }
-
-    loading.textContent = reply;
-
-  } catch (err) {
-    console.error("FETCH ERROR:", err);
-    loading.textContent = "Erreur connexion serveur";
   }
-}
 
-  /* ================= INPUT EVENTS ================= */
+  /* ================= INPUT ================= */
 
-  chatbotSend.addEventListener("click", () => {
+  chatbotSend.onclick = () => {
     const text = chatbotInput.value.trim();
     if (!text) return;
-
     chatbotInput.value = "";
     sendToAI(text);
-  });
+  };
 
-  chatbotInput.addEventListener("keydown", (e) => {
+  chatbotInput.onkeydown = (e) => {
     if (e.key === "Enter") {
       const text = chatbotInput.value.trim();
       if (!text) return;
-
       chatbotInput.value = "";
       sendToAI(text);
     }
-  });
+  };
 
   /* ================= HELPERS ================= */
 
   function addMessage(text, type) {
     const div = document.createElement("div");
-
-    if (type === "intro") div.className = "message-intro";
-    else if (type === "section") div.className = "message-section";
-    else div.className = "message-bot";
+    div.className =
+      type === "intro" ? "message-intro" :
+      type === "section" ? "message-section" :
+      "message-bot";
 
     div.textContent = text;
     chatbotMessages.appendChild(div);
@@ -263,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement("div");
     div.className = "message-bot";
     div.textContent = text;
-    div.style.cursor = "pointer";
     div.onclick = action;
     return div;
   }
