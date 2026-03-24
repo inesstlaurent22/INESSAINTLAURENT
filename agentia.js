@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sendToAI(text);
   });
 
-  chatbotInput.addEventListener("keypress", (e) => {
+  chatbotInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const text = chatbotInput.value.trim();
       if (!text) return;
