@@ -248,7 +248,7 @@ const CONTENT = {
 
     <div class="card-list">
       ${experienceCard(
-        "Consultante en développement d’activité",
+        "<strong>Consultante en développement d’activité</strong>",
         "Gearbooker",
         "Audiovisuel & international",
         [
@@ -260,7 +260,7 @@ const CONTENT = {
       )}
 
       ${experienceCard(
-        "Commerciale Marketing",
+        "<strong>Commerciale Marketing</strong>",
         "Pachamamaï",
         "Cosmétique & marchés internationaux",
         [
@@ -272,7 +272,7 @@ const CONTENT = {
       )}
 
       ${experienceCard(
-        "CEO & Community Manager",
+        "<strong>CEO & Community Manager</strong>",
         "PUFFRAP",
         "Média musical",
         [
@@ -284,7 +284,7 @@ const CONTENT = {
       )}
 
       ${experienceCard(
-        "CEO & Développeuse Web",
+        "<strong>CEO & Développeuse Web</strong>",
         "KIT IN",
         "Entrepreneuriat & digital",
         [
@@ -296,7 +296,7 @@ const CONTENT = {
       )}
 
       ${experienceCard(
-        "Stagiaire Comptable",
+        "<strong>Stagiaire Comptable</strong>",
         "Pages Jaunes",
         "Annuaires digitaux",
         [
@@ -307,7 +307,7 @@ const CONTENT = {
       )}
 
       ${experienceCard(
-        "Vendeuse & Ambassadrice de marque",
+        "<strong>Vendeuse & Ambassadrice de marque</strong>",
         "Galeries Lafayette – Le Paradis du Fruit – Le Perchoir",
         "Restauration & Retail",
         [
@@ -480,7 +480,7 @@ en: {
 
     <div class="card-list">
       ${experienceCard(
-        "Business Development Consultant",
+        "<strong>Business Development Consultant</strong>",
         "Gearbooker",
         "Audiovisual & international",
         [
@@ -492,7 +492,7 @@ en: {
       )}
 
       ${experienceCard(
-        "Marketing & Sales Executive",
+        "<strong>Marketing & Sales Executive</strong>",
         "Pachamamaï",
         "Cosmetics & international markets",
         [
@@ -504,7 +504,7 @@ en: {
       )}
 
       ${experienceCard(
-        "CEO & Community Manager",
+        "<strong>CEO & Community Manager</strong>",
         "PUFFRAP",
         "Music media",
         [
@@ -516,7 +516,7 @@ en: {
       )}
 
       ${experienceCard(
-        "CEO & Web Developer",
+        "<strong>CEO & Web Developer</strong>",
         "KIT IN",
         "Entrepreneurship & digital",
         [
@@ -528,7 +528,7 @@ en: {
       )}
 
       ${experienceCard(
-        "Accounting Intern",
+        "<strong>Accounting Intern</strong>",
         "Pages Jaunes",
         "Digital directories",
         [
@@ -539,7 +539,7 @@ en: {
       )}
 
       ${experienceCard(
-        "Sales Associate & Brand Ambassador",
+        "<strong>Sales Associate & Brand Ambassador</strong>",
         "Galeries Lafayette – Le Paradis du Fruit – Le Perchoir",
         "Hospitality & Retail",
         [
@@ -712,7 +712,7 @@ es: {
 
     <div class="card-list">
       ${experienceCard(
-        "Consultora en desarrollo de negocio",
+        "<strong>Consultora en desarrollo de negocio</strong>",
         "Gearbooker",
         "Audiovisual e internacional",
         [
@@ -724,7 +724,7 @@ es: {
       )}
 
       ${experienceCard(
-        "Comercial de Marketing",
+        "<strong>Comercial de Marketing</strong>",
         "Pachamamaï",
         "Cosmética y mercados internacionales",
         [
@@ -736,7 +736,7 @@ es: {
       )}
 
       ${experienceCard(
-        "CEO & Community Manager",
+        "<strong>CEO & Community Manager</strong>",
         "PUFFRAP",
         "Medio musical",
         [
@@ -748,7 +748,7 @@ es: {
       )}
 
       ${experienceCard(
-        "CEO & Desarrolladora Web",
+        "<strong>CEO & Desarrolladora Web</strong>",
         "KIT IN",
         "Emprendimiento y digital",
         [
@@ -760,7 +760,7 @@ es: {
       )}
 
       ${experienceCard(
-        "Practicante de Contabilidad",
+        "<strong>Practicante de Contabilidad</strong>",
         "Pages Jaunes",
         "Directorios digitales",
         [
@@ -771,7 +771,7 @@ es: {
       )}
 
       ${experienceCard(
-        "Vendedora y Embajadora de Marca",
+        "<strong>Vendedora y Embajadora de Marca</strong>",
         "Galeries Lafayette – Le Paradis du Fruit – Le Perchoir",
         "Restauración y Retail",
         [
@@ -944,7 +944,7 @@ zh: {
 
     <div class="card-list">
       ${experienceCard(
-        "商业发展顾问",
+        "<strong>商业发展顾问</strong>",
         "Gearbooker",
         "视听行业与国际市场",
         [
@@ -956,7 +956,7 @@ zh: {
       )}
 
       ${experienceCard(
-        "市场与销售专员",
+        "<strong>市场与销售专员</strong>",
         "Pachamamaï",
         "化妆品与国际市场",
         [
@@ -968,7 +968,7 @@ zh: {
       )}
 
       ${experienceCard(
-        "CEO & 社群经理",
+        "<strong>CEO & 社群经理</strong>",
         "PUFFRAP",
         "音乐媒体",
         [
@@ -980,7 +980,7 @@ zh: {
       )}
 
       ${experienceCard(
-        "CEO & 网页开发者",
+        "<strong>CEO & 网页开发者</strong>",
         "KIT IN",
         "创业与数字化",
         [
@@ -992,7 +992,7 @@ zh: {
       )}
 
       ${experienceCard(
-        "会计实习生",
+        "<strong>会计实习生</strong>",
         "Pages Jaunes",
         "数字目录",
         [
@@ -1003,7 +1003,7 @@ zh: {
       )}
 
       ${experienceCard(
-        "销售员与品牌大使",
+        "<strong>销售员与品牌大使</strong>",
         "老佛爷百货 – Le Paradis du Fruit – Le Perchoir",
         "餐饮与零售",
         [
