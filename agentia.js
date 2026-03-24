@@ -1,6 +1,4 @@
-
-
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   const chatbotToggle = document.getElementById("chatbot-toggle");
   const chatbotBox = document.getElementById("chatbot-box");
@@ -10,7 +8,7 @@
 
   /* ================= DATA ================= */
 
-  const FAQ = {
+const FAQ = {
 
     offre: {
       title: "🎯 Offre & positionnement",
@@ -92,9 +90,6 @@
 
   };
 
-  let clickedQuestions = new Set();
-  let totalQuestions = 0;
-
   /* ================= OPEN ================= */
 
   chatbotToggle.addEventListener("click", () => {
@@ -104,15 +99,26 @@
     if (!isOpen) showThemes();
   });
 
+  /* ================= BACK BUTTON FIXE ================= */
+
+  function createBackButton() {
+    let existing = document.querySelector(".chatbot-back-top");
+    if (existing) return;
+
+    const btn = document.createElement("div");
+    btn.className = "chatbot-back-top";
+    btn.textContent = "←";
+
+    btn.addEventListener("click", showThemes);
+
+    chatbotBox.appendChild(btn);
+  }
+
   /* ================= THEMES ================= */
 
   function showThemes() {
     chatbotMessages.innerHTML = "";
-    clickedQuestions.clear();
-
-    // total questions
-    totalQuestions = Object.values(FAQ)
-      .reduce((acc, cat) => acc + cat.questions.length, 0);
+    createBackButton();
 
     addMessage("Bonjour 👋 Choisis un sujet :", "intro");
 
@@ -126,13 +132,12 @@
 
   function showQuestions(category) {
     chatbotMessages.innerHTML = "";
+    createBackButton();
 
     addMessage("Voici les questions disponibles :", "section");
 
     FAQ[category].questions.forEach(item => {
-      const div = createClickable("👉 " + item.q, () => {
-        showAnswer(item);
-      });
+      const div = createClickable("👉 " + item.q, () => showAnswer(item));
       chatbotMessages.appendChild(div);
     });
   }
@@ -141,34 +146,11 @@
 
   function showAnswer(item) {
     const div = document.createElement("div");
-    div.className = "message-bot";
+    div.className = "message-answer"; // 🔥 bulle droite bleue
     div.textContent = item.r;
 
     chatbotMessages.appendChild(div);
-
-    clickedQuestions.add(item.q);
-
-    checkIfFinished();
-  }
-
-  /* ================= CHECK FIN ================= */
-
-  function checkIfFinished() {
-    if (clickedQuestions.size === totalQuestions) {
-      showBackButton();
-    }
-  }
-
-  /* ================= BACK BUTTON ================= */
-
-  function showBackButton() {
-    const btn = document.createElement("div");
-    btn.className = "chatbot-back";
-    btn.textContent = "⬅ Retour au menu";
-
-    btn.addEventListener("click", showThemes);
-
-    chatbotMessages.appendChild(btn);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
   }
 
   /* ================= HELPERS ================= */
