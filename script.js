@@ -38,68 +38,85 @@ langMenu.querySelectorAll("button").forEach(btn => {
 }
 
 /* ================= WIDGET DRAG FULL MOBILE FIX ================= */
-
 const widget = document.getElementById("formationWidget");
 
-let isDragging = false;
-let hasMoved = false;
-let offsetX = 0;
-let offsetY = 0;
+if (widget) {
 
-/* ===== DESKTOP ===== */
-widget.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  hasMoved = false;
-  offsetX = e.clientX - widget.offsetLeft;
-  offsetY = e.clientY - widget.offsetTop;
-});
+  let isDragging = false;
+  let hasMoved = false;
+  let offsetX = 0;
+  let offsetY = 0;
 
-document.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
+  /* ===== DESKTOP ===== */
+  widget.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    hasMoved = false;
 
-  hasMoved = true;
-  widget.style.left = (e.clientX - offsetX) + "px";
-  widget.style.top = (e.clientY - offsetY) + "px";
-});
+    offsetX = e.clientX - widget.offsetLeft;
+    offsetY = e.clientY - widget.offsetTop;
+  });
 
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-});
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
 
-/* ===== MOBILE ===== */
-widget.addEventListener("touchstart", (e) => {
-  const touch = e.touches[0];
-  isDragging = true;
-  hasMoved = false;
-  offsetX = touch.clientX - widget.offsetLeft;
-  offsetY = touch.clientY - widget.offsetTop;
-}, { passive: false });
+    hasMoved = true;
 
-document.addEventListener("touchmove", (e) => {
-  if (!isDragging) return;
+    const maxX = window.innerWidth - widget.offsetWidth;
+    const maxY = window.innerHeight - widget.offsetHeight;
 
-  e.preventDefault(); // 🔥 bloque le scroll
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
 
-  const touch = e.touches[0];
-  hasMoved = true;
+    widget.style.left = Math.max(0, Math.min(x, maxX)) + "px";
+    widget.style.top = Math.max(0, Math.min(y, maxY)) + "px";
+  });
 
-  widget.style.left = (touch.clientX - offsetX) + "px";
-  widget.style.top = (touch.clientY - offsetY) + "px";
-}, { passive: false });
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
 
-document.addEventListener("touchend", () => {
-  isDragging = false;
-});
+  /* ===== MOBILE ===== */
+  widget.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
 
-/* ===== CLIC SEULEMENT SI PAS DRAG ===== */
-widget.addEventListener("click", (e) => {
-  if (hasMoved) {
+    isDragging = true;
+    hasMoved = false;
+
+    offsetX = touch.clientX - widget.offsetLeft;
+    offsetY = touch.clientY - widget.offsetTop;
+  }, { passive: false });
+
+  document.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+
     e.preventDefault();
-    return;
-  }
 
-  window.location.href = "https://inesstlaurent22.github.io/FORMATION-ENTREPRO/";
-});
+    const touch = e.touches[0];
+    hasMoved = true;
+
+    const maxX = window.innerWidth - widget.offsetWidth;
+    const maxY = window.innerHeight - widget.offsetHeight;
+
+    let x = touch.clientX - offsetX;
+    let y = touch.clientY - offsetY;
+
+    widget.style.left = Math.max(0, Math.min(x, maxX)) + "px";
+    widget.style.top = Math.max(0, Math.min(y, maxY)) + "px";
+  }, { passive: false });
+
+  document.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  /* ===== CLIC (corrigé) ===== */
+  widget.addEventListener("click", (e) => {
+    if (hasMoved) {
+      e.preventDefault(); // bloque seulement si drag
+    }
+    // sinon → le <a> gère la redirection automatiquement
+  });
+
+}
 
 /* ================= HELPERS ================= */
 function experienceCard(role, company, sector, tasks) {
