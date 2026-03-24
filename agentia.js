@@ -6,7 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbotBox = document.getElementById("chatbot-box");
   const chatbotMessages = document.getElementById("chatbot-messages");
 
-  if (!chatbotToggle || !chatbotBox || !chatbotMessages) return;
+  // sécurité
+  if (!chatbotToggle || !chatbotBox || !chatbotMessages) {
+    console.error("Chatbot éléments introuvables");
+    return;
+  }
+
+  console.log("Chatbot chargé");
 
   /* ================= DATA ================= */
 
@@ -92,16 +98,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   };
 
-  /* ================= UI ================= */
-chatbotToggle.addEventListener("click", () => {
-  const isOpen = chatbotBox.classList.contains("active");
+  /* ================= OUVERTURE / FERMETURE ================= */
 
-  chatbotBox.classList.toggle("active");
+  chatbotToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-  if (!isOpen) {
-    showThemes();
-  }
-});
+    console.log("CLICK OK");
+
+    const isOpen = chatbotBox.classList.contains("active");
+
+    chatbotBox.classList.toggle("active");
+
+    if (!isOpen) {
+      showThemes();
+    }
+  });
+
+  /* ================= FERMETURE SI CLIC EXTÉRIEUR ================= */
+
+  document.addEventListener("click", (e) => {
+    if (!chatbotBox.contains(e.target) && !chatbotToggle.contains(e.target)) {
+      chatbotBox.classList.remove("active");
+    }
+  });
 
   /* ================= THEMES ================= */
 
