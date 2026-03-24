@@ -170,7 +170,6 @@ html, body {
 }
 
 /* ================= BULLES ================= */
-/* ================= BULLES ================= */
 
 /* intro */
 .message-intro {
@@ -484,6 +483,7 @@ html, body {
   gap: 20px;
 }
 
+/* base */
 .card-btn {
   width: 100%;
   padding: 20px 22px;
@@ -493,27 +493,41 @@ html, body {
   text-align: left;
   cursor: pointer;
   font-size: 16px;
-
-  display: block;
   line-height: 1.5;
 }
 
-/* 🔥 Met en avant le rôle (1ère ligne) */
-.card-btn::first-line {
-  font-weight: 700;
-  font-size: 17px;
-}
-
-/* ❌ Retire le gras de l’entreprise */
+/* ❌ enlève le gras de l’entreprise */
 .card-btn strong {
   font-weight: 400;
 }
 
-/* ✨ Rend le secteur plus discret */
+/* 🔥 recrée un "faux titre" pour la première ligne */
+.card-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+/* on force la première ligne à être visuellement dominante */
+.card-btn br:first-of-type {
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* 👉 solution visuelle : on augmente tout sauf strong et em */
+.card-btn {
+  font-weight: 600;
+}
+
+/* puis on re-diminue ce qui ne doit PAS être en gras */
+.card-btn strong,
+.card-btn em {
+  font-weight: 400;
+}
+
+/* secteur discret */
 .card-btn em {
   opacity: 0.7;
   font-size: 13px;
-  display: block;
   margin-top: 2px;
 }
 
