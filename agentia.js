@@ -178,32 +178,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function sendToAI(text) {
 
-    const userDiv = document.createElement("div");
-    userDiv.className = "message-user";
-    userDiv.textContent = text;
-    chatbotMessages.appendChild(userDiv);
+  const userDiv = document.createElement("div");
+  userDiv.className = "message-user";
+  userDiv.textContent = text;
+  chatbotMessages.appendChild(userDiv);
 
-    const loading = document.createElement("div");
-    loading.className = "message-answer";
-    loading.textContent = "...";
-    chatbotMessages.appendChild(loading);
+  const loading = document.createElement("div");
+  loading.className = "message-answer";
+  loading.textContent = "...";
+  chatbotMessages.appendChild(loading);
 
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-    try {
-      const res = await fetch("https://eorgzwur78kxob1.m.pipedream.net", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
-      });
+  try {
 
-      const data = await res.json();
-      loading.textContent = data.reply || "Erreur IA";
+    const res = await fetch("https://eorgzwur78kxob1.m.pipedream.net", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: text })
+    });
 
-    } catch {
-      loading.textContent = "Erreur serveur";
+    const data = await res.json();
+
+    console.log("DEBUG IA:", data); // 🔥 IMPORTANT
+
+    if (!res.ok) {
+      loading.textContent = "Erreur API";
+      return;
     }
+
+    if (data.error) {
+      loading.textContent = "Erreur IA : quota ou clé API";
+      return;
+    }
+
+    loading.textContent = data.reply || "Réponse vide";
+
+  } catch (err) {
+    console.error(err);
+    loading.textContent = "Erreur connexion serveur";
   }
+}
 
   /* ================= INPUT EVENTS ================= */
 
