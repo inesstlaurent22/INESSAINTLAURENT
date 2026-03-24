@@ -135,14 +135,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= ANSWER ================= */
 
-  function showAnswer(item) {
-    const div = document.createElement("div");
-    div.className = "message-answer";
-    div.textContent = item.r;
+  async function showAnswer(item) {
 
-    chatbotMessages.appendChild(div);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  // 1. afficher la question (à gauche)
+  const userDiv = document.createElement("div");
+  userDiv.className = "message-bot";
+  userDiv.textContent = item.q;
+  chatbotMessages.appendChild(userDiv);
+
+  // 2. loader (optionnel)
+  const loadingDiv = document.createElement("div");
+  loadingDiv.className = "message-answer";
+  loadingDiv.textContent = "...";
+  chatbotMessages.appendChild(loadingDiv);
+
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+  try {
+    const response = await fetch("https://eorgzwur78kxob1.m.pipedream.net", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: item.q
+      })
+    });
+
+    const data = await response.json();
+
+    // 3. remplacer loader par vraie réponse
+    loadingDiv.textContent = data.reply || "Erreur de réponse IA";
+
+  } catch (error) {
+    loadingDiv.textContent = "Erreur de connexion à l'IA";
   }
+
+}
 
   /* ================= HELPERS ================= */
 
