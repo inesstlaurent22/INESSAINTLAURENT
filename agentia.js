@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   try {
 
-    const res = await fetch("https://eorgzwur78kxob1.m.pipedream.net", {
+    const res = await fetch("https://eop1ak3sxerl3b3.m.pipedream.net", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
