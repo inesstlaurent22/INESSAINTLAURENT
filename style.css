@@ -516,66 +516,80 @@ html, body {
 }
 
 /* ================= LANGUAGE SWITCH ================= */
-
+/* ================= LANGUAGE SWITCH (STYLE WIDGET) ================= */
 #lang-switch {
   position: fixed;
-  right: 21px;   /* Desktop X */
-  top: 39px;      /* Desktop Y */
-  z-index: 9999;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
 }
 
-/* Bouton globe */
+/* bouton globe */
 #lang-current {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+
+  font-size: 22px;
+  color: #111;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 #lang-current:hover {
-  transform: scale(1.08);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  transform: scale(1.06);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
 }
 
-/* Menu déroulant */
+/* ================= MENU ================= */
 .lang-menu {
   position: absolute;
-  top: 60px;
+  top: 65px;
   right: 0;
-
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 
   display: none;
   flex-direction: column;
+
+  border-radius: 18px;
   overflow: hidden;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
 }
 
 .lang-menu.active {
   display: flex;
 }
 
+/* boutons langues */
 .lang-menu button {
   padding: 12px 18px;
   border: none;
-  background: none;
+  background: transparent;
   cursor: pointer;
 
   font-size: 14px;
   text-align: left;
-  white-space: nowrap;
+  color: #111;
+
+  transition: background 0.2s ease;
 }
 
 .lang-menu button:hover {
