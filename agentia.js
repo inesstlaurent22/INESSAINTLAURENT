@@ -171,9 +171,16 @@ document.addEventListener("DOMContentLoaded", () => {
   async function sendToAI(text) {
 
     const userDiv = document.createElement("div");
-    userDiv.className = "message-user";
-    userDiv.textContent = text;
-    chatbotMessages.appendChild(userDiv);
+userDiv.className = "message-user-grey";
+userDiv.textContent = text;
+
+// 🔥 IMPORTANT : wrapper pour alignement à droite
+const wrapper = document.createElement("div");
+wrapper.style.display = "flex";
+wrapper.style.justifyContent = "flex-end";
+
+wrapper.appendChild(userDiv);
+chatbotMessages.appendChild(wrapper);
 
     const loading = document.createElement("div");
     loading.className = "message-answer";
