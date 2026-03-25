@@ -1188,13 +1188,26 @@ contentBox.addEventListener("click", e => {
 
   // Engagement
   if (e.target.id === "openEngagement") {
-    contentBox.insertAdjacentHTML(
-      "beforeend",
-      `<div class="bubble" style="background:#fff;color:#3A6EFF;margin-top:20px;">
-        ${CONTENT[currentLang].engagement}
-      </div>`
-    );
+
+  let existing = document.getElementById("engagementBubble");
+
+  // 👉 si déjà affiché → on supprime
+  if (existing) {
+    existing.remove();
+    return;
   }
+
+  // 👉 sinon → on crée
+  const div = document.createElement("div");
+  div.id = "engagementBubble";
+  div.className = "bubble";
+  div.style.background = "#fff";
+  div.style.color = "#3A6EFF";
+  div.style.marginTop = "20px";
+  div.innerHTML = CONTENT[currentLang].engagement;
+
+  contentBox.appendChild(div);
+}
 
   // Offre steps
   if (
