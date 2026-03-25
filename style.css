@@ -305,20 +305,38 @@ html, body {
   text-align: center;
 }
 
+/* CONTENEUR MESSAGE */
+.chat-row {
+  display: flex;
+  margin: 6px 0;
+}
+
+/* IA (gauche) */
+.chat-row.bot {
+  justify-content: flex-start;
+}
+
+/* USER (droite) */
+.chat-row.user {
+  justify-content: flex-end;
+}
+
+/* BULLE IA */
+.message-answer {
+  background: #3A6EFF;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 75%;
+}
+
+/* BULLE USER */
 .message-user-grey {
-  align-self: flex-end;
   background: #e5e5ea;
   color: #111;
   padding: 10px 14px;
   border-radius: 14px;
   max-width: 75%;
-  word-break: break-word;
-}
-
-.message-answer {
-  align-self: flex-start;
-  background: #3A6EFF;
-  color: white;
 }
 
 /* ================= BLOCS ================= */
