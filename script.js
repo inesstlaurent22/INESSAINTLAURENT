@@ -1187,26 +1187,28 @@ contentBox.addEventListener("click", e => {
   }
 
   // Engagement
-  if (e.target.id === "openEngagement") {
+if (e.target.id === "openEngagement") {
 
-  let existing = document.getElementById("engagementBubble");
+  const existing = document.getElementById("engagementBubble");
 
-  // 👉 si déjà affiché → on supprime
+  // 🔁 toggle propre
   if (existing) {
     existing.remove();
-    return;
+  } else {
+
+    // 🔒 sécurité : supprime toute ancienne trace (au cas où)
+    document.querySelectorAll("#engagementBubble").forEach(el => el.remove());
+
+    const div = document.createElement("div");
+    div.id = "engagementBubble";
+    div.className = "bubble";
+    div.style.background = "#fff";
+    div.style.color = "#3A6EFF";
+    div.style.marginTop = "20px";
+    div.innerHTML = CONTENT[currentLang].engagement;
+
+    contentBox.appendChild(div);
   }
-
-  // 👉 sinon → on crée
-  const div = document.createElement("div");
-  div.id = "engagementBubble";
-  div.className = "bubble";
-  div.style.background = "#fff";
-  div.style.color = "#3A6EFF";
-  div.style.marginTop = "20px";
-  div.innerHTML = CONTENT[currentLang].engagement;
-
-  contentBox.appendChild(div);
 }
 
   // Offre steps
